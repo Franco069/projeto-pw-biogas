@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parâmetros — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <nav class="admin-topbar">
+      <a class="admin-brand" href="dashboard.html"><h1 class="logo">Parâmetros</h1></a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <nav class="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Usuários</a></li>
+        <li><a href="admins.html">Administradores</a></li>
+        <li><a href="wastes.html">Resíduos</a></li>
+        <li><a href="params.html" class="active">Parâmetros</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="reports.html">Relatórios</a></li>
+      </ul>
+    </nav>
+
+    <section class="admin-content">
+      <section class="admin-card">
+        <h2>Parâmetros do Sistema</h2>
+        <p>Os valores abaixo são usados nas novas simulações. O rendimento de biogás é definido em Resíduos, conforme o tipo escolhido. As simulações salvas preservam seus resultados.</p>
+        <section id="params-list">Carregando parâmetros...</section>
+        <aside id="params-feedback" class="admin-message hidden" aria-live="polite"></aside>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="../scripts/admin.js"></script>
+</body>
+</html>

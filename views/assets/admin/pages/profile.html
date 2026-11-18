@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil Administrativo — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../../app/styles/profile.css">
+  <link rel="stylesheet" href="../styles/admin.css">
+</head>
+<body class="profile-page">
+  <header class="admin-header">
+    <nav class="admin-topbar">
+      <a class="admin-brand" href="dashboard.html"><h1 class="logo">Admin — Perfil</h1></a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <nav class="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Usuários</a></li>
+        <li><a href="admins.html">Administradores</a></li>
+        <li><a href="wastes.html">Resíduos</a></li>
+        <li><a href="params.html">Parâmetros</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="reports.html">Relatórios</a></li>
+        <li><a href="profile.html" class="active">Perfil</a></li>
+      </ul>
+    </nav>
+
+    <section class="admin-content">
+      <header class="profile-heading">
+        <h1>Meu Perfil</h1>
+        <p>Atualize seus dados de acesso e sua foto de perfil.</p>
+      </header>
+
+      <section class="profile-grid">
+
+        <!-- CARD DADOS -->
+        <section class="section-panel profile-card">
+
+          <header class="profile-card-header">
+            <div>
+              <h2>Dados pessoais</h2>
+              <p>Altere seu nome, e-mail ou senha de acesso.</p>
+            </div>
+            <svg class="profile-card-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="7" r="4"/><path d="M3 21v-3a7 7 0 0 1 10-6m2 9 6-6-3-3-6 6v3z"/></svg>
+          </header>
+
+          <form id="profile-form" class="profile-data-form" data-profile-form>
+
+            <fieldset>
+              <legend class="sr-only">Dados pessoais</legend>
+
+              <div class="profile-fields-row">
+
+                <label for="profile-name">
+                  Nome completo
+
+                  <input
+                    id="profile-name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required maxlength="100"
+                  >
+                </label>
+
+                <label for="profile-email">
+                  E-mail
+
+                  <input
+                    id="profile-email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required maxlength="150"
+                  >
+                </label>
+
+              </div>
+
+              <fieldset class="profile-password-box">
+                <legend>
+                  Alterar senha
+                  <span>(opcional)</span>
+                </legend>
+
+                <div class="profile-fields-row">
+
+                  <label for="profile-current-password">
+                    Senha atual
+
+                    <input
+                      id="profile-current-password"
+                      name="current_password"
+                      type="password"
+                      autocomplete="current-password"
+                    >
+                  </label>
+
+                  <label for="profile-password">
+                    Nova senha
+
+                    <input
+                      id="profile-password"
+                      name="new_password"
+                      type="password"
+                      autocomplete="new-password"
+                      minlength="8" aria-describedby="profile-password-hint"
+                    >
+                  </label>
+
+                </div>
+
+                <small id="profile-password-hint">
+                  Preencha os dois campos para trocar a senha. Use pelo menos 8 caracteres, com letras e números.
+                </small>
+              </fieldset>
+
+              <footer class="profile-actions">
+                <button type="submit" class="btn btn-primary">
+                  Salvar dados
+                </button>
+              </footer>
+
+            </fieldset>
+          </form>
+
+          <aside
+            id="profile-feedback"
+            data-profile-feedback role="status"
+            class="app-message hidden"
+            aria-live="polite"
+          ></aside>
+
+        </section>
+
+
+        <!-- CARD FOTO -->
+        <section class="section-panel profile-card">
+
+          <header class="profile-card-header">
+            <div>
+              <h2>Foto de perfil</h2>
+              <p>Este formulário altera somente sua foto.</p>
+            </div>
+            <svg class="profile-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m3 18 7-7 4 4 3-3 4 4"/></svg>
+          </header>
+
+          <section class="profile-photo-info">
+
+            <div class="profile-avatar" data-user-avatar>
+              <span data-user-initials aria-label="Sem foto de perfil">BG</span>
+              <img data-user-photo data-profile-photo alt="Sua foto de perfil" hidden>
+            </div>
+
+            <div class="profile-photo-copy">
+              <strong>Escolha uma imagem para seu perfil</strong>
+              <p id="profile-photo-hint">
+                Formatos aceitos: JPG, PNG ou WEBP. Tamanho máximo: 5 MB.
+              </p>
+            </div>
+
+          </section>
+
+          <form
+            id="profile-photo-form"
+            class="profile-photo-form"
+            enctype="multipart/form-data"
+            data-profile-photo-form
+          >
+
+            <fieldset>
+              <legend class="sr-only">
+                Alterar foto de perfil
+              </legend>
+
+              <label for="profile-photo">
+                Selecionar foto
+              </label>
+
+              <input
+                id="profile-photo"
+                name="photo"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                data-profile-photo-input aria-describedby="profile-photo-hint"
+              >
+
+              <div class="profile-photo-preview" data-profile-photo-preview hidden>
+                <img data-profile-preview-image alt="Prévia da nova foto de perfil">
+                <div><strong>Prévia da nova foto</strong><p>Esta imagem ainda não foi salva.</p>
+                  <button type="button" class="profile-cancel-photo" data-profile-photo-cancel>Cancelar seleção</button>
+                </div>
+              </div>
+
+              <footer class="profile-actions">
+                <button type="submit" class="btn btn-primary">
+                  Atualizar foto
+                </button>
+              </footer>
+
+            </fieldset>
+
+          </form>
+
+          <aside
+            id="profile-photo-feedback"
+            data-profile-photo-feedback role="status"
+            class="app-message hidden"
+            aria-live="polite"
+          ></aside>
+
+        </section>
+
+      </section>
+
+    </section>
+  </main>
+  <script type="module" src="../scripts/admin.js"></script>
+</body>
+</html>

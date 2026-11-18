@@ -1,0 +1,219 @@
+/* BioGas Analytics — estilos compartilhados por todas as páginas do APP. */
+.app-page { background: #f6f7f8; }
+.app-page [hidden] { display: none !important; }
+.app-page .app-topbar { max-width: none; min-height: 88px; gap: 24px; padding: 16px 32px; }
+.app-page .app-brand-copy { display: grid; }
+.app-page .app-brand-meta { color: var(--color-text-light); font-size: 12px; }
+.app-page .topbar-actions { display: flex; align-items: center; justify-content: flex-start; gap: 20px; padding: 0; flex-wrap: wrap; }
+.app-page .topbar-actions > .btn { display: inline-flex; align-items: center; padding: 10px 16px; font-size: 14px; }
+.app-page .app-account { gap: 12px; max-width: 280px; }
+.app-account > span:last-child { min-width: 0; text-align: left; }
+.app-account strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.app-account small { display: block; font-size: 11px; font-weight: 400; opacity: .85; }
+.app-user-avatar { width: 36px; height: 36px; flex: 0 0 36px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; background: rgba(255,255,255,.18); }
+.app-user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.app-page .app-main { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: calc(100vh - 88px); }
+.app-page .app-sidebar { display: block; align-self: stretch; width: 100%; max-width: none; padding: 28px 14px; margin: 0; background: var(--color-white); border-right: 1px solid var(--color-border); }
+.app-page .sidebar-list { list-style: none; display: grid; gap: 8px; margin: 0; }
+.app-page .sidebar-list li { margin: 0; }
+.app-page .sidebar-list a { display: flex; align-items: center; gap: 14px; min-height: 50px; padding: 12px 16px; border-radius: 12px; font-size: 14px; font-weight: 600; color: var(--color-text-light); }
+.app-page .sidebar-list a:hover { background: var(--color-gray-50); transform: none; color: var(--color-primary-dark); }
+.app-page .sidebar-list a.active { background: rgba(10,140,52,.08); color: var(--color-primary); }
+.app-page .sidebar-list .sidebar-logout { margin-top: 32px; border: 1px solid var(--color-border); }
+.app-page svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.app-page .sidebar-list svg { width: 23px; height: 23px; }
+.app-page .app-content { padding: 44px clamp(24px, 3vw, 56px); min-width: 0; }
+/* Normaliza os estilos globais de elementos públicos somente dentro do APP. */
+.app-page :where(.app-content, .report-modal) :where(section, header, nav, footer) { padding: 0; margin: 0; }
+.app-page :where(.app-content, .report-modal) :where(header, footer) { position: static; z-index: auto; background: transparent; border: 0; box-shadow: none; }
+.app-page .app-page-heading { margin-bottom: 32px; }
+.app-page .app-page-heading h1 { font-size: clamp(28px, 2.4vw, 38px); margin-bottom: 8px; }
+.app-page .app-page-heading p { margin: 0; font-size: 16px; }
+.app-page .section-panel { min-width: 0; padding: 28px; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 20px; box-shadow: 0 10px 30px rgba(31,41,55,.045); }
+.app-page .app-content > .section-panel + .section-panel, .app-page .app-content > .cards-grid + .section-panel { margin-top: 24px; }
+.app-page .section-panel h2 { font-size: 20px; margin-bottom: 20px; }
+.app-page .section-panel h3 { font-size: 18px; }
+.app-page .section-panel p { font-size: 14px; }
+.app-page .section-panel > p:last-child { margin-bottom: 0; }
+.app-page .section-actions { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.app-page .section-actions h2 { margin: 0; }
+.app-page .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; font-size: 14px; font-weight: 700; gap: 8px; }
+.app-page .btn-small { min-height: 36px; padding: 8px 12px; font-size: 12px; }
+.app-page .btn.danger { color: #b42318; border-color: #f1c6c2; }
+.app-page .btn.danger:hover { background: #fef2f2; }
+.app-page a:focus-visible { outline: 3px solid rgba(10,140,52,.3); outline-offset: 3px; }
+.app-page .app-footer { margin: 0 0 0 248px; padding: 16px 32px; background: transparent; color: var(--color-text-light); font-size: 12px; }
+/* Dashboard. */
+.app-page .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px; }
+.app-page .cards-grid .card { min-width: 0; padding: 24px; border-radius: 16px; box-shadow: none; }
+.app-page .cards-grid .card h3 { margin-bottom: 10px; font-size: 16px; }
+.app-page .cards-grid .card p { margin: 0; }
+.app-page .card-stat .value { display: block; color: var(--color-primary-dark); font-size: clamp(24px, 2.2vw, 34px); font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.app-page .card-stat .label { margin-top: 12px; font-size: 13px; }
+.app-page .table-placeholder { display: block; place-items: normal; min-height: 0; padding: 20px; font-size: 14px; background: var(--color-gray-50); border: 1px solid var(--color-border); border-radius: 12px; }
+.app-page .pill { display: inline-flex; padding: 6px 10px; border-radius: 20px; background: rgba(10,140,52,.08); color: var(--color-primary-dark); font-size: 12px; font-weight: 600; white-space: nowrap; }
+/* Formulário e resultado da simulação. */
+.app-page .form-grid > fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; min-width: 0; }
+.app-page .form-grid label { margin: 0; font-size: 14px; }
+.app-page .form-grid input, .app-page .form-grid select { display: block; margin-top: 8px; min-width: 0; height: 52px; padding: 12px 14px; }
+.app-page .form-actions { display: flex; grid-column: 1 / -1; justify-content: flex-end; padding-top: 8px; }
+.app-page #simulation-result:not(.hidden) { margin-top: 28px; background: var(--color-gray-50); box-shadow: none; }
+.app-page .simulation-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.app-page .simulation-summary article { display: grid; gap: 8px; padding: 18px; border: 1px solid var(--color-border); border-radius: 12px; background: white; }
+.app-page .simulation-summary strong { color: var(--color-text-light); font-size: 12px; font-weight: 600; }
+.app-page .simulation-summary span { color: var(--color-primary-dark); font-size: 20px; font-weight: 700; overflow-wrap: anywhere; }
+.app-page #simulation-result > p { margin: 16px 0; }
+/* Histórico e comparação: rolagem contida nas tabelas. */
+.app-page .table-scroll, .app-page .comparison-table { max-width: 100%; overflow-x: auto; border: 1px solid var(--color-border); border-radius: 12px; }
+.app-page table { margin: 0; font-size: 13px; text-align: left; }
+.app-page .sim-table { min-width: 780px; }
+.app-page thead { background: var(--color-gray-50); }
+.app-page th, .app-page td { padding: 16px; vertical-align: middle; border-bottom: 1px solid var(--color-border); }
+.app-page th { font-weight: 600; }
+.app-page tbody tr:last-child > * { border-bottom: 0; }
+.app-page tbody tr:hover { background: rgba(10,140,52,.025); }
+.app-page .action-btns { display: flex; gap: 8px; max-width: none; justify-content: flex-start; }
+.app-page dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 24px; margin: 0; font-size: 14px; }
+.app-page dt, .app-page dd { min-width: 0; padding: 12px 0; border-bottom: 1px solid var(--color-border); overflow-wrap: anywhere; }
+.app-page dt { color: var(--color-text-light); }
+.app-page dd { margin: 0; font-weight: 600; text-align: right; }
+.app-page .comparison-form { width: 100%; align-items: flex-start; gap: 20px; }
+.app-page .comparison-options { display: grid; gap: 12px; width: 100%; }
+.app-page .comparison-options label { display: flex; align-items: center; gap: 12px; padding: 16px; margin: 0; border: 1px solid var(--color-border); border-radius: 10px; background: white; font-size: 14px; font-weight: 500; cursor: pointer; }
+.app-page .comparison-options label:has(input:checked) { background: rgba(10,140,52,.05); border-color: var(--color-primary); }
+.app-page .comparison-options input { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; accent-color: var(--color-primary); }
+.app-page .comparison-table table { min-width: 620px; }
+.app-page .comparison-table tbody th { color: var(--color-text-light); }
+/* Listagens e janela do relatório. */
+.app-page .report-group + .report-group { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--color-border); }
+.app-page .report-group > h3 { margin-bottom: 16px; font-size: 16px; }
+.app-page .report-list { display: grid; gap: 12px; width: 100%; list-style: none; margin: 0; padding: 0; }
+.app-page .report-item { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-width: 0; padding: 18px; margin: 0; background: white; border: 1px solid var(--color-border); border-radius: 12px; }
+.app-page .report-item > section { min-width: 0; }
+.app-page .report-item :is(h3, h4) { margin-bottom: 6px; font-size: 15px; overflow-wrap: anywhere; }
+.app-page .report-item p { margin: 0; font-size: 12px; }
+.app-page .report-item > .btn { flex-shrink: 0; }
+.app-page .report-modal { width: min(980px, calc(100% - 48px)); max-height: calc(100dvh - 48px); padding: 0; margin: auto; overflow: auto; color: var(--color-text); background: white; border: 1px solid var(--color-border); border-radius: 20px; box-shadow: var(--shadow-xl); }
+.app-page .report-modal::backdrop { background: rgba(17,24,39,.45); backdrop-filter: blur(3px); }
+.app-page .report-modal-header { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; background: white; border-bottom: 1px solid var(--color-border); }
+.app-page .report-modal-header h2 { margin: 0; font-size: 20px; }
+.app-page .report-modal-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.app-page .report-preview { padding: 28px; }
+.app-page .report-preview h3 { font-size: 24px; margin-bottom: 24px; }
+.app-page .report-preview h5 { color: var(--color-primary-dark); font-size: 14px; margin: 28px 0 12px; }
+.app-page .report-preview p { font-size: 14px; }
+.app-page .app-message { padding: 12px 14px; border-radius: 10px; font-size: 13px; overflow-wrap: anywhere; background: var(--color-gray-50); }
+.app-page .app-message[data-state="error"] { color: #991b1b; background: #fef2f2; }
+.app-page .app-message[data-state="success"] { color: var(--color-primary-dark); background: rgba(10,140,52,.07); }
+.app-page button:disabled, .app-page input:disabled { opacity: .6; cursor: wait; }
+.app-page .toast { max-width: calc(100vw - 32px); border-radius: 12px; box-shadow: var(--shadow-lg); font-size: 14px; }
+.app-page .toast-success { background: var(--color-primary-dark); }
+@media (max-width: 1180px) {
+  .app-page .app-main { grid-template-columns: 216px minmax(0, 1fr); }
+  .app-page .app-footer { margin-left: 216px; }
+  .app-page .app-content { padding: 32px 24px; }
+}
+@media (max-width: 700px) {
+  .app-page .app-topbar { padding: 14px 16px; min-height: 80px; gap: 12px; flex-wrap: wrap; }
+  .app-page .logo { font-size: 22px; }
+  .app-page .topbar-actions { gap: 8px; flex-wrap: wrap; }
+  .app-page .topbar-actions > .btn { padding: 8px 12px; font-size: 12px; }
+  .app-page .app-account { max-width: 190px; }
+  .app-page .app-main { display: block; }
+  .app-page .app-sidebar { padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--color-border); }
+  .app-page .sidebar-list { display: flex; gap: 6px; overflow-x: auto; }
+  .app-page .sidebar-list li { flex: 0 0 auto; }
+  .app-page .sidebar-list a { min-height: 40px; padding: 8px 12px; font-size: 12px; gap: 8px; white-space: nowrap; }
+  .app-page .sidebar-list svg { width: 18px; height: 18px; }
+  .app-page .sidebar-list .sidebar-logout { margin: 0; }
+  .app-page .app-content { padding: 28px 16px; }
+  .app-page .app-page-heading { margin-bottom: 24px; }
+  .app-page .app-page-heading p { font-size: 14px; }
+  .app-page .section-panel { padding: 22px 18px; border-radius: 16px; }
+  .app-page .app-footer { margin-left: 0; padding: 16px; }
+  .app-page .cards-grid, .app-page .form-grid > fieldset { grid-template-columns: 1fr; gap: 16px; }
+  .app-page .section-actions { align-items: flex-start; }
+  .app-page .section-actions > .btn, .app-page .form-actions > .btn { width: 100%; }
+  .app-page .report-item { flex-wrap: wrap; gap: 12px; padding: 16px; }
+  .app-page .report-item > .btn { width: 100%; }
+  .app-page .report-modal { width: calc(100% - 24px); max-height: calc(100dvh - 24px); border-radius: 16px; }
+  .app-page .report-modal-header { padding: 20px 18px; flex-wrap: wrap; gap: 16px; }
+  .app-page .report-modal-actions { width: 100%; }
+  .app-page .report-modal-actions .btn { flex: 1; }
+  .app-page .report-preview { padding: 18px; }
+  .app-page dl { gap: 0 16px; font-size: 13px; }
+}
+@media print {
+  .app-page { background: white; }
+  .app-page:has(.report-modal[open]) > :not(.report-modal) { display: none !important; }
+  .app-page .report-modal[open] { position: static; width: 100%; max-width: none; max-height: none; overflow: visible; border: 0; border-radius: 0; box-shadow: none; }
+  .app-page .report-modal::backdrop, .app-page .report-modal-actions { display: none; }
+  .app-page .report-modal-header { position: static; padding: 0 0 20px; }
+  .app-page .report-preview { padding: 0; }
+  .app-page .report-preview h5 { break-after: avoid; }
+  .app-page dt, .app-page dd { break-inside: avoid; }
+}
+
+/* Imagens dos locais */
+
+#location-images {
+    margin-top: 24px;
+}
+
+#location-image-form {
+    margin-bottom: 24px;
+}
+
+#location-image-previews,
+#location-image-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.location-image-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.location-image-thumbnail {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #ddd);
+}
+
+#location-image-feedback {
+    margin: 16px 0;
+}
+
+#location-image-feedback[data-state="success"] {
+    color: #16803c;
+}
+
+#location-image-feedback[data-state="error"] {
+    color: #b42318;
+}
+
+#location-image-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Fotos vinculadas à simulação, comparação e relatório. */
+.app-page #simulation-photo-form { display: grid; gap: 16px; }
+.app-page #simulation-photo-target { font-weight: 600; color: var(--color-primary-dark); }
+.app-page #simulation-images { display: block; width: 100%; margin: 8px 0; }
+.app-page .simulation-photo-gallery,
+.app-page #simulation-image-previews { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+.app-page .simulation-photo { width: 150px; max-width: 100%; height: 110px; object-fit: cover; border: 1px solid var(--color-border); border-radius: 8px; }
+.app-page .comparison-table .simulation-photo { width: 120px; height: 90px; }
+.app-page #simulation-picker-list .report-item h3 { font-size: 16px; }
+.app-page #simulation-picker-list .report-item p { overflow-wrap: anywhere; }
+@media print {
+  .app-page .simulation-photo { break-inside: avoid; object-fit: contain; }
+}

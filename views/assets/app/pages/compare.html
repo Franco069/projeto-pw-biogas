@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comparar Cenários — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body class="app-page">
+  <header class="app-header">
+    <nav class="app-topbar" aria-label="Barra superior da aplicação">
+      <a class="app-brand" href="dashboard.html">
+        <span class="app-brand-copy">
+          <strong class="logo">BioGas Analytics</strong>
+          <small class="app-brand-meta">Área de Aplicação</small>
+        </span>
+      </a>
+      <section class="topbar-actions">
+        <a href="../../public/pages/home.html" class="btn btn-secondary">Voltar ao Site</a>
+        <a href="profile.html" class="btn btn-primary app-account">
+          <span class="app-user-avatar" data-user-avatar>
+            <span data-user-initials aria-hidden="true">BG</span>
+            <img data-user-photo alt="" hidden>
+          </span>
+          <span><strong data-user-name>Minha Conta</strong><small>Meu perfil</small></span>
+        </a>
+      </section>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <nav class="app-sidebar" aria-label="Navegação da aplicação">
+      <ul class="sidebar-list">
+        <li><a href="dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</a></li>
+        <li><a href="new-simulation.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6m-5 0v6L4 19a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L14 9V3M8 14h8"/></svg>Nova Simulação</a></li>
+        <li><a href="history.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.6 7.4M3 4v7h7m2-4v5l3 2"/></svg>Histórico</a></li>
+        <li><a href="compare.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/></svg>Comparar Cenários</a></li>
+        <li><a href="reports.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v17h17M9 15V9m5 6V5m5 10v-4"/></svg>Relatórios</a></li>
+        <li><a href="profile.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg>Perfil</a></li>
+        <li>
+          <a
+            href="../../public/pages/login.html"
+            id="app-logout"
+            class="sidebar-logout"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v16h5m0-8h12m-4-4 4 4-4 4"/></svg>Sair
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="app-content">
+      <header class="app-page-heading">
+        <h1>Comparar Cenários</h1>
+        <p>Compare suas simulações e encontre o cenário mais adequado para seu projeto.</p>
+      </header>
+
+      <section class="section-panel">
+        <h2>Comparação de Cenários</h2>
+        <p class="lead">Selecione até 3 simulações para comparar os resultados lado a lado.</p>
+        <section id="compare-builder" class="table-placeholder">Salve pelo menos duas simulações para comparar os cenários.</section>
+      </section>
+
+      <section id="compare-output" class="section-panel">
+        <h3>Resultado da Comparação</h3>
+        <p>Os dados comparados aparecerão aqui assim que você selecionar os cenários.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="app-footer">© 2026 BioGas Analytics</footer>
+
+  <script type="module" src="../scripts/app.js"></script>
+</body>
+</html>

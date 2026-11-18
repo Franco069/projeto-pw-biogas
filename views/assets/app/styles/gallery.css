@@ -1,0 +1,11 @@
+.app-page .gallery-form { display: grid; align-items: start; gap: 12px; margin-top: 16px; }
+.app-page .gallery-form input, .app-page #gallery-product { width: 100%; max-width: 680px; min-height: 46px; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 8px; background: white; }
+.app-page .gallery-form .btn { justify-self: start; }
+.app-page .gallery-product-choice { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 12px 0 20px; }
+.app-page .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 190px), 1fr)); gap: 16px; margin-top: 14px; }
+.app-page #gallery-previews img, .app-page .gallery-item img { width: 100%; aspect-ratio: 4 / 3; display: block; border-radius: 10px; object-fit: cover; background: var(--color-gray-50); }
+.app-page .gallery-item { display: grid; gap: 12px; min-width: 0; padding: 12px; border: 1px solid var(--color-border); border-radius: 12px; }
+.app-page .gallery-item p { margin: 0; overflow-wrap: anywhere; font-size: 13px; }
+.app-page .gallery-item button { justify-self: start; }
+.app-page #gallery-feedback { margin: 16px 0 0; }
+.app-page .gallery-form[hidden], .app-page #gallery-feedback[hidden] { display: none !important; }

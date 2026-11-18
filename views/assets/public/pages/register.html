@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cadastre-se no BioGas Analytics e comece a analisar viabilidade de biogás gratuitamente">
+  <title>Cadastro — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/auth.css">
+</head>
+<body class="auth-page">
+  <header>
+    <nav>
+      <a class="nav-brand" href="home.html">
+        <h1 class="logo">BioGas Analytics</h1>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="home.html#benefits">Benefícios</a></li>
+        <li><a href="contact.html">Contato</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li class="nav-auth">
+          <a href="login.html" class="btn btn-secondary btn-small">Entrar</a>
+          <a href="register.html" class="btn btn-primary btn-small">Cadastro</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="auth-main">
+    <section class="auth-container">
+      <article class="auth-box">
+        <h1>Criar Conta</h1>
+        <p class="auth-subtitle">Comece sua jornada em sustentabilidade energética</p>
+
+        <form id="register-form" class="auth-form">
+          <fieldset>
+            <legend class="sr-only">Formulário de Cadastro</legend>
+
+            <fieldset class="form-group">
+              <label for="register-name">Nome Completo</label>
+              <input
+                type="text"
+                id="register-name"
+                name="name"
+                aria-required="true"
+                placeholder="João Silva"
+              />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label for="register-email">E-mail</label>
+              <input
+                type="text"
+                id="register-email"
+                name="email"
+                aria-required="true"
+                placeholder="seu@email.com"
+              />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label for="register-password">Senha</label>
+              <input
+                type="password"
+                id="register-password"
+                name="password"
+                aria-required="true"
+                placeholder="Digite uma senha forte"
+              />
+              <small class="password-hint">Mínimo 8 caracteres, contendo letras e números</small>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label for="register-password-confirm">Confirmar Senha</label>
+              <input
+                type="password"
+                id="register-password-confirm"
+                name="password_confirm"
+                aria-required="true"
+                placeholder="Confirme sua senha"
+              />
+            </fieldset>
+
+            <fieldset class="form-group checkbox">
+              <input
+                type="checkbox"
+                id="register-terms"
+                name="terms"
+                aria-required="true"
+              />
+              <label for="register-terms">
+                Concordo com os <a href="faq.html">Termos de Uso</a> e <a href="faq.html">Política de Privacidade</a>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-group checkbox">
+              <input type="checkbox" id="register-newsletter" name="newsletter" />
+              <label for="register-newsletter">
+                Desejo receber novidades e dicas sobre biogás por e-mail
+              </label>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary btn-large btn-full">Criar Conta</button>
+          </fieldset>
+        </form>
+
+        <!-- Form Feedback -->
+        <aside id="form-feedback" class="form-feedback hidden" role="alert"></aside>
+
+        <p class="auth-footer">
+          Já tem uma conta? <a href="login.html">Faça login aqui</a>
+        </p>
+      </article>
+
+      <aside class="auth-benefits">
+        <h2>Por Que Cadastrar?</h2>
+        <ul>
+          <li>
+            <strong>✓ Análises Ilimitadas</strong>
+            <p>Realize quantas simulações desejar e salve no histórico</p>
+          </li>
+          <li>
+            <strong>✓ Comparação de Cenários</strong>
+            <p>Compare diferentes simulações lado a lado</p>
+          </li>
+          <li>
+            <strong>✓ Relatórios em PDF</strong>
+            <p>Exporte relatórios completos para apresentações</p>
+          </li>
+          <li>
+            <strong>✓ Acesso Contínuo</strong>
+            <p>Acesse suas simulações de qualquer dispositivo</p>
+          </li>
+          <li>
+            <strong>✓ Suporte Dedicado</strong>
+            <p>Tire dúvidas diretamente com nosso time</p>
+          </li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <section class="container">
+      <section class="footer-content">
+        <article class="footer-section">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </article>
+
+        <article class="footer-section">
+          <h4>Conta</h4>
+          <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Cadastro</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <hr class="footer-divider">
+
+      <section class="footer-bottom text-center">
+        <p>&copy; 2026 BioGas Analytics. Todos os direitos reservados. Desenvolvido com 💚 para um planeta mais sustentável.</p>
+        <p>Charqueadas – RS | Brasil</p>
+      </section>
+    </section>
+  </footer>
+
+  <script type="module" src="../scripts/auth.js"></script>
+</body>
+</html>

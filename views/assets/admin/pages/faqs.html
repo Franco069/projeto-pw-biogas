@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerenciar FAQs — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <nav class="admin-topbar">
+      <a class="admin-brand" href="dashboard.html"><h1 class="logo">FAQs</h1></a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <nav class="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Usuários</a></li>
+        <li><a href="admins.html">Administradores</a></li>
+        <li><a href="wastes.html">Resíduos</a></li>
+        <li><a href="params.html">Parâmetros</a></li>
+        <li><a href="faqs.html" class="active">FAQs</a></li>
+        <li><a href="reports.html">Relatórios</a></li>
+      </ul>
+    </nav>
+
+    <section class="admin-content">
+      <section class="admin-card">
+        <header class="section-actions">
+          <h2>Gestão de FAQs</h2>
+          <button id="create-faq" class="btn btn-primary">Criar FAQ</button>
+        </header>
+        <form id="faq-category-form" class="form-grid">
+          <label>Nova categoria<input name="name" required maxlength="255"></label>
+          <footer class="form-actions"><button type="submit" class="btn btn-secondary">Cadastrar categoria</button></footer>
+        </form>
+        <table class="management-table">
+          <thead>
+            <tr>
+              <th>Pergunta</th>
+              <th>Resposta</th>
+              <th>Estado</th>
+              <th>Criado</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="faqs-body"></tbody>
+        </table>
+      </section>
+
+      <section id="faq-details" class="admin-card">
+        <h3>Detalhes da FAQ</h3>
+        <p>Selecione uma FAQ para ver detalhes.</p>
+      </section>
+
+      <section id="faq-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <section class="modal-box">
+          <header class="modal-header">
+            <h3 id="faq-modal-title">Criar FAQ</h3>
+            <button type="button" data-close="faq-modal" class="btn btn-secondary">Fechar</button>
+          </header>
+          <form id="faq-form">
+            <fieldset>
+              <label>Pergunta<input id="faq-question" name="question" required></label>
+              <label>Resposta<textarea id="faq-answer" name="answer" required></textarea></label>
+              <label>Categoria<select id="faq-category" name="faqs_category_id" required></select></label>
+              <fieldset class="form-group checkbox">
+                <label for="faq-published"><input id="faq-published" type="checkbox"> Publicada</label>
+              </fieldset>
+              <footer class="modal-actions">
+                <button type="button" class="btn btn-secondary" data-close="faq-modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </footer>
+            </fieldset>
+          </form>
+        </section>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="../scripts/admin.js"></script>
+</body>
+</html>

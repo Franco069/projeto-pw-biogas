@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <nav class="admin-topbar">
+      <a class="admin-brand" href="dashboard.html"><h1 class="logo">BioGas Analytics — Admin</h1></a>
+      <section class="topbar-actions">
+        <a href="../../public/pages/home.html" class="btn btn-secondary">Ver Site Público</a>
+      </section>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <nav class="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="users.html">Usuários</a></li>
+        <li><a href="admins.html">Administradores</a></li>
+        <li><a href="wastes.html">Resíduos</a></li>
+        <li><a href="params.html">Parâmetros</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="reports.html">Relatórios</a></li>
+        <li><a href="profile.html">Perfil</a></li>
+      </ul>
+    </nav>
+
+    <section class="admin-content">
+      <section class="admin-overview admin-card">
+        <header class="admin-overview-header">
+          <section class="admin-overview-copy">
+            <p class="admin-eyebrow">Área administrativa</p>
+            <h2>Painel de controle</h2>
+            <p>Acompanhe a base do sistema, a saúde do conteúdo e os principais indicadores do BioGas Analytics em uma visão inicial mais objetiva.</p>
+          </section>
+
+          <aside class="admin-overview-aside">
+            <p class="admin-overview-label">Parâmetros ativos</p>
+            <strong id="admin-overview-parameters" class="admin-overview-value">0 parâmetros</strong>
+            <small id="admin-overview-yield" class="admin-overview-meta">Resíduo por pessoa não configurado</small>
+            <small id="admin-overview-timestamp" class="admin-overview-meta">Sem atualizações recentes.</small>
+          </aside>
+        </header>
+
+        <ul class="admin-overview-metrics">
+          <li>
+            <strong id="admin-overview-published">0</strong>
+            <span>FAQs publicadas</span>
+          </li>
+          <li>
+            <strong id="admin-overview-wastes">0</strong>
+            <span>Resíduos cadastrados</span>
+          </li>
+          <li>
+            <strong id="admin-overview-admins">0</strong>
+            <span>Administradores ativos</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="admin-cards">
+        <article class="admin-card admin-kpi-card">
+          <p class="admin-kpi-label">Base de usuários</p>
+          <p id="admin-total-users" class="value">0</p>
+          <p class="admin-kpi-meta">Contas cadastradas na área logada.</p>
+        </article>
+        <article class="admin-card admin-kpi-card">
+          <p class="admin-kpi-label">Conteúdo publicado</p>
+          <p id="admin-total-published-faqs" class="value">0</p>
+          <p class="admin-kpi-meta">FAQs visíveis para consulta pública.</p>
+        </article>
+        <article class="admin-card admin-kpi-card">
+          <p class="admin-kpi-label">Resíduos mapeados</p>
+          <p id="admin-total-wastes" class="value">0</p>
+          <p class="admin-kpi-meta">Tipos de resíduo ativos na base.</p>
+        </article>
+        <article class="admin-card admin-kpi-card">
+          <p class="admin-kpi-label">Governança ativa</p>
+          <p id="admin-total-admins" class="value">0</p>
+          <p class="admin-kpi-meta">Administradores habilitados no painel.</p>
+        </article>
+      </section>
+
+      <section class="admin-dashboard-grid">
+        <article class="admin-card admin-chart-card">
+          <header class="admin-panel-header">
+            <section>
+              <p class="admin-eyebrow">Conteúdo</p>
+              <h3>Status de publicação</h3>
+            </section>
+            <p class="admin-panel-meta">FAQ base atual</p>
+          </header>
+
+          <section class="admin-donut-layout">
+            <figure id="admin-donut-faqs" class="admin-donut ratio-0" aria-hidden="true">
+              <span class="admin-donut-hole">
+                <strong id="admin-faq-ratio">0%</strong>
+                <small>publicadas</small>
+              </span>
+            </figure>
+
+            <ul class="admin-donut-legend">
+              <li>
+                <span class="admin-legend-swatch admin-legend-primary" aria-hidden="true"></span>
+                <span>Publicadas</span>
+                <strong id="admin-published-faqs-count">0</strong>
+              </li>
+              <li>
+                <span class="admin-legend-swatch admin-legend-soft" aria-hidden="true"></span>
+                <span>Rascunhos</span>
+                <strong id="admin-draft-faqs-count">0</strong>
+              </li>
+              <li>
+                <span class="admin-legend-swatch admin-legend-muted" aria-hidden="true"></span>
+                <span>Resíduos base</span>
+                <strong id="admin-donut-wastes-count">0</strong>
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <article class="admin-card admin-chart-card">
+          <header class="admin-panel-header">
+            <section>
+              <p class="admin-eyebrow">Volumetria</p>
+              <h3>Cadastros por módulo</h3>
+            </section>
+            <p class="admin-panel-meta">Base atual do painel</p>
+          </header>
+
+          <ul class="admin-column-chart">
+            <li id="admin-column-users" class="admin-column" data-level="0">
+              <strong id="admin-column-users-value" class="admin-column-value">0</strong>
+              <span class="admin-column-track"><span class="admin-column-fill"></span></span>
+              <small>Usuários</small>
+            </li>
+            <li id="admin-column-admins" class="admin-column" data-level="0">
+              <strong id="admin-column-admins-value" class="admin-column-value">0</strong>
+              <span class="admin-column-track"><span class="admin-column-fill"></span></span>
+              <small>Admins</small>
+            </li>
+            <li id="admin-column-wastes" class="admin-column" data-level="0">
+              <strong id="admin-column-wastes-value" class="admin-column-value">0</strong>
+              <span class="admin-column-track"><span class="admin-column-fill"></span></span>
+              <small>Resíduos</small>
+            </li>
+            <li id="admin-column-faqs" class="admin-column" data-level="0">
+              <strong id="admin-column-faqs-value" class="admin-column-value">0</strong>
+              <span class="admin-column-track"><span class="admin-column-fill"></span></span>
+              <small>FAQs</small>
+            </li>
+          </ul>
+        </article>
+
+        <article class="admin-card admin-activity-card">
+          <header class="admin-panel-header">
+            <section>
+              <p class="admin-eyebrow">Linha do tempo</p>
+              <h3>Atividades recentes</h3>
+            </section>
+            <p class="admin-panel-meta">Últimas movimentações da base</p>
+          </header>
+
+          <section id="admin-recent-activity" class="admin-activity-stream">As movimentações do sistema aparecerão aqui.</section>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer class="admin-footer">© 2026 BioGas Analytics — Administração</footer>
+<script type="module" src="../scripts/admin.js"></script>
+
+</body>
+</html>

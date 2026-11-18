@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Perguntas Frequentes sobre BioGas Analytics — Tire suas dúvidas sobre biogás, simulações e a plataforma">
+  <title>FAQ — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/faq.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="nav-brand" href="home.html">
+        <h1 class="logo">BioGas Analytics</h1>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="home.html#benefits">Benefícios</a></li>
+        <li><a href="contact.html">Contato</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li class="nav-auth">
+          <a href="login.html" class="btn btn-secondary btn-small">Entrar</a>
+          <a href="register.html" class="btn btn-primary btn-small">Cadastro</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <section class="container">
+        <h1>Perguntas Frequentes</h1>
+        <p class="hero-subtitle">Encontre respostas sobre BioGas Analytics, biogás e simulações</p>
+
+        <!-- Search Bar -->
+        <form class="faq-search" id="faq-search-form">
+          <input
+            type="text"
+            id="faq-search"
+            placeholder="Procure por uma pergunta..."
+            aria-label="Pesquisar perguntas frequentes"
+          />
+          <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </form>
+      </section>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="faq-section">
+      <section class="container">
+        <nav id="faq-categories" class="faq-categories" role="tablist">
+    <button class="category-tab active"
+            data-category="all"
+            role="tab"
+            aria-selected="true">
+        Todas
+    </button>
+</nav>
+      </section>
+    </section>
+
+    <!-- FAQ Items -->
+    <section class="faq-items-section">
+      <section class="container">
+        <!-- TODO: substituir por dados reais da API GET /api/faqs -->
+        
+        <ul class="faq-list" id="faq-list">
+
+          
+        </ul>
+
+        <!-- No Results Message -->
+        <section id="no-results" class="no-results hidden" aria-hidden="true">
+          <p>Nenhuma pergunta encontrada para sua busca. Tente outros termos ou <a href="contact.html">entre em contato</a> com nosso suporte.</p>
+        </section>
+      </section>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <section class="container text-center">
+        <h2>Ainda Tem Dúvidas?</h2>
+        <p>Não encontrou a resposta que procurava? Entre em contato conosco!</p>
+        <a href="contact.html" class="btn btn-primary btn-large">Enviar Mensagem</a>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <section class="container">
+      <section class="footer-content">
+        <article class="footer-section">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </article>
+
+        <article class="footer-section">
+          <h4>Conta</h4>
+          <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Cadastro</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <hr class="footer-divider">
+
+      <section class="footer-bottom text-center">
+        <p>&copy; 2026 BioGas Analytics. Todos os direitos reservados. Desenvolvido com 💚 para um planeta mais sustentável.</p>
+        <p>Charqueadas – RS | Brasil</p>
+      </section>
+    </section>
+  </footer>
+
+  <script type="module" src="../scripts/faqs.js"></script>
+</body>
+</html>

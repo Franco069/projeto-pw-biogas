@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relatórios Administrativos — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <nav class="admin-topbar">
+      <a class="admin-brand" href="dashboard.html"><h1 class="logo">Relatórios</h1></a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <nav class="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Usuários</a></li>
+        <li><a href="admins.html">Administradores</a></li>
+        <li><a href="wastes.html">Resíduos</a></li>
+        <li><a href="params.html">Parâmetros</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="reports.html" class="active">Relatórios</a></li>
+      </ul>
+    </nav>
+
+    <section class="admin-content">
+      <section class="admin-card">
+        <h2>Gerar Relatórios</h2>
+        <form id="admin-report-form" class="form-grid">
+          <label>Período
+            <select id="admin-report-period">
+              <option value="7">Últimos 7 dias</option>
+              <option value="30">Últimos 30 dias</option>
+              <option value="365">Último ano</option>
+            </select>
+          </label>
+          <footer class="form-actions"><button type="submit" class="btn btn-primary">Gerar</button></footer>
+        </form>
+      </section>
+
+      <section id="admin-report-results" class="admin-card">
+        <h3>Relatórios Gerados</h3>
+        <section class="table-placeholder">Gere um relatório para visualizar os indicadores consolidados.</section>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="../scripts/admin.js"></script>
+</body>
+</html>

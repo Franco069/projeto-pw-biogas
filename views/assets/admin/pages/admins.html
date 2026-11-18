@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerenciar Administradores — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <nav class="admin-topbar">
+      <a class="admin-brand" href="dashboard.html"><h1 class="logo">Administradores</h1></a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <nav class="admin-sidebar" aria-label="Admin navigation">
+      <ul class="admin-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Usuários</a></li>
+        <li><a href="admins.html" class="active">Administradores</a></li>
+        <li><a href="wastes.html">Resíduos</a></li>
+        <li><a href="params.html">Parâmetros</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="reports.html">Relatórios</a></li>
+      </ul>
+    </nav>
+
+    <section class="admin-content">
+      <section class="admin-card">
+        <header class="section-actions">
+          <h2>Gerenciar Administradores</h2>
+          <button id="create-admin" class="btn btn-primary">Criar Administrador</button>
+        </header>
+        <table class="management-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Papel</th>
+              <th>Criado</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="admins-body"></tbody>
+        </table>
+      </section>
+
+      <section id="admin-details" class="admin-card">
+        <h3>Detalhes do administrador</h3>
+        <p>Selecione um administrador para ver detalhes.</p>
+      </section>
+
+      <section id="admin-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <section class="modal-box">
+          <header class="modal-header">
+            <h3 id="admin-modal-title">Criar Administrador</h3>
+            <button type="button" data-close="admin-modal" class="btn btn-secondary">Fechar</button>
+          </header>
+          <form id="admin-form">
+            <fieldset>
+              <label>Nome<input id="admin-name" name="name" required maxlength="100"></label>
+              <label>E-mail<input id="admin-email" name="email" type="email" required maxlength="150"></label>
+              <label>Senha inicial<input id="admin-password" name="password" type="password" autocomplete="new-password" minlength="8" required><small>Use pelo menos 8 caracteres, com letras e números.</small></label>
+              <footer class="modal-actions">
+                <button type="button" class="btn btn-secondary" data-close="admin-modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </footer>
+            </fieldset>
+          </form>
+        </section>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="../scripts/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova Simulação — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body class="app-page">
+  <header class="app-header">
+    <nav class="app-topbar" aria-label="Barra superior da aplicação">
+      <a class="app-brand" href="dashboard.html">
+        <span class="app-brand-copy">
+          <strong class="logo">BioGas Analytics</strong>
+          <small class="app-brand-meta">Área de Aplicação</small>
+        </span>
+      </a>
+      <section class="topbar-actions">
+        <a href="../../public/pages/home.html" class="btn btn-secondary">Voltar ao Site</a>
+        <a href="profile.html" class="btn btn-primary app-account">
+          <span class="app-user-avatar" data-user-avatar>
+            <span data-user-initials aria-hidden="true">BG</span>
+            <img data-user-photo alt="" hidden>
+          </span>
+          <span>
+            <strong data-user-name>Minha Conta</strong>
+            <small>Meu perfil</small>
+          </span>
+        </a>
+      </section>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <nav class="app-sidebar" aria-label="Navegação da aplicação">
+      <ul class="sidebar-list">
+        <li>
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+              <rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="new-simulation.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 3h6m-5 0v6L4 19a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L14 9V3M8 14h8"/>
+            </svg>
+            Nova Simulação
+          </a>
+        </li>
+        <li>
+          <a href="history.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 11a9 9 0 1 1 2.6 7.4M3 4v7h7m2-4v5l3 2"/>
+            </svg>
+            Histórico
+          </a>
+        </li>
+        <li>
+          <a href="compare.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/>
+            </svg>
+            Comparar Cenários
+          </a>
+        </li>
+        <li>
+          <a href="reports.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 3v17h17M9 15V9m5 6V5m5 10v-4"/>
+            </svg>
+            Relatórios
+          </a>
+        </li>
+        <li>
+          <a href="profile.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="7" r="4"/>
+              <path d="M4 21v-3a8 8 0 0 1 16 0v3"/>
+            </svg>
+            Perfil
+          </a>
+        </li>
+        <li>
+          <a
+            href="../../public/pages/login.html"
+            id="app-logout"
+            class="sidebar-logout"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 4H4v16h5m0-8h12m-4-4 4 4-4 4"/>
+            </svg>
+            Sair
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="app-content">
+      <header class="app-page-heading">
+        <h1>Nova Simulação</h1>
+        <p>Informe os dados do local e estime o potencial do seu projeto de biogás.</p>
+      </header>
+
+      <section class="section-panel">
+        <h2>Dados do local</h2>
+
+        <form id="simulation-form" class="form-grid">
+          <fieldset>
+            <legend class="sr-only">Formulário de simulação</legend>
+
+            <label>
+              Nome do local
+              <input
+                type="text"
+                name="location_name"
+                id="sim-name"
+                placeholder="Nome do local"
+              >
+            </label>
+
+            <label>
+              Tipo do local
+              <select name="location_type" id="sim-type">
+                <option value="">Selecione</option>
+                <option value="Restaurante">Restaurante</option>
+                <option value="Propriedade rural">Propriedade rural</option>
+                <option value="Indústria">Indústria</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </label>
+
+            <label>
+              Cidade
+              <input
+                type="text"
+                name="city"
+                id="sim-city"
+              >
+            </label>
+
+            <label>
+              Estado (UF)
+              <input
+                type="text"
+                name="state"
+                id="sim-state"
+                maxlength="2"
+              >
+            </label>
+
+            <label>
+              Tipo de resíduo
+              <select name="waste_type_id" id="sim-waste-type" required disabled>
+                <option value="">Carregando resíduos...</option>
+              </select>
+              <small id="sim-waste-yield">O rendimento do resíduo escolhido será usado no cálculo.</small>
+            </label>
+
+            <label>
+              Quantidade de pessoas
+              <input
+                type="number"
+                name="people_quantity"
+                id="sim-people"
+                step="1"
+              >
+            </label>
+
+            <label>
+              Consumo mensal atual de GLP (kg)
+              <input
+                type="number"
+                name="glp_consumption_kg"
+                id="sim-glp-consumption"
+                step="any"
+              >
+            </label>
+
+            <label>
+              Custo mensal atual de GLP (R$)
+              <input
+                type="number"
+                name="glp_monthly_cost"
+                id="sim-glp-cost"
+                step="any"
+              >
+            </label>
+
+            <label>
+              Custo estimado de implantação (R$)
+              <input
+                type="number"
+                name="implementation_cost"
+                id="sim-implementation-cost"
+                step="any"
+              >
+            </label>
+
+            <footer class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Executar Simulação
+              </button>
+            </footer>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- Formulário independente para envio das imagens -->
+      <section class="section-panel">
+        <header class="section-actions">
+          <h2>Fotos da simulação</h2>
+          <button type="button" id="show-all-simulations" class="btn btn-secondary">Todas simulações</button>
+        </header>
+
+        <p>
+          Escolha uma simulação salva em “Todas simulações” e envie as fotos neste formulário.
+        </p>
+        <p id="simulation-photo-target" aria-live="polite">Nenhuma simulação selecionada.</p>
+
+        <form id="simulation-photo-form" enctype="multipart/form-data">
+          <div class="form-field">
+            <label for="simulation-images">
+              Selecionar imagens
+            </label>
+
+            <input
+              type="file"
+              id="simulation-images"
+              name="images"
+              accept="image/jpeg,image/png,image/webp"
+              multiple
+              required
+            >
+
+            <small>
+              Formatos permitidos: JPG, PNG e WEBP.
+              Tamanho máximo de 5 MB por imagem.
+            </small>
+          </div>
+
+          <div id="simulation-image-previews"></div>
+
+          <footer class="form-actions">
+            <button type="submit" id="upload-simulation-photos" class="btn btn-primary" disabled>Adicionar fotos</button>
+          </footer>
+
+          <p
+            id="simulation-image-feedback"
+            aria-live="polite"
+            hidden
+          ></p>
+        </form>
+        <div id="simulation-saved-images" class="simulation-photo-gallery"></div>
+      </section>
+
+      <!-- Resultado da simulação -->
+      <section
+        id="simulation-result"
+        class="section-panel hidden"
+        aria-live="polite"
+      ></section>
+    </section>
+  </main>
+
+  <dialog id="simulation-picker" class="report-modal" aria-labelledby="simulation-picker-title">
+    <header class="report-modal-header">
+      <h2 id="simulation-picker-title">Todas simulações</h2>
+      <button type="button" id="close-simulation-picker" class="btn btn-secondary">Fechar</button>
+    </header>
+    <section id="simulation-picker-list" class="report-preview">Carregando simulações...</section>
+  </dialog>
+
+  <footer class="app-footer">© 2026 BioGas Analytics</footer>
+
+  <script type="module" src="../scripts/app.js"></script>
+</body>
+</html>

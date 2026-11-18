@@ -1,0 +1,46 @@
+/* Somente componentes do perfil. Cabeçalho e navegação usam app.css. */
+.profile-heading { padding: 0; margin-bottom: 32px; }
+.profile-heading h1 { font-size: clamp(28px, 2.4vw, 38px); margin-bottom: 8px; }
+.profile-heading p { margin: 0; font-size: 16px; }
+.profile-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 24px; padding: 0; }
+.profile-card { display: flex; flex-direction: column; gap: 24px; }
+.profile-card-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0; }
+.profile-page .profile-card-header h2 { margin: 0 0 4px; font-size: 20px; }
+.profile-page .profile-card-header p { margin: 0; font-size: 14px; }
+.profile-card-icon { width: 26px; height: 26px; color: var(--color-text); }
+.profile-data-form, .profile-photo-form { display: block; }
+.profile-data-form > fieldset, .profile-photo-form > fieldset { display: grid; gap: 16px; min-width: 0; }
+.profile-fields-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.profile-fields-row label { margin: 0; font-size: 14px; }
+.profile-fields-row input { margin-top: 8px; min-width: 0; height: 52px; padding: 12px 14px; }
+.profile-password-box { display: grid; gap: 16px; margin-top: 12px; padding: 20px; border: 1px solid var(--color-border); border-radius: var(--border-radius-lg); }
+.profile-password-box legend { padding: 0 4px; font-size: 14px; font-weight: 700; }
+.profile-password-box legend span { font-weight: 400; color: var(--color-text-light); }
+.profile-password-box small { font-size: 12px; line-height: 1.5; color: var(--color-text-light); }
+.profile-page .profile-actions { display: flex; justify-content: flex-end; margin-top: 8px; padding: 0; border: 0; background: transparent; }
+.profile-page .profile-actions .btn { min-height: 46px; }
+.profile-photo-info { display: flex; align-items: center; min-height: 110px; gap: 20px; padding: 0; }
+.profile-avatar { width: 88px; height: 88px; flex: 0 0 88px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(10,140,52,.12); border-radius: 50%; background: rgba(10,140,52,.06); color: var(--color-primary); font-size: 28px; font-weight: 700; }
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.profile-photo-copy { min-width: 0; }
+.profile-photo-copy strong { display: block; margin-bottom: 4px; font-size: 15px; }
+.profile-page .profile-photo-copy p { margin: 0; font-size: 13px; }
+.profile-photo-form label { margin-bottom: 8px; font-size: 14px; }
+.profile-photo-form input[type="file"] { padding: 8px; background: white; font-size: 13px; min-width: 0; max-width: 100%; }
+.profile-photo-form input::file-selector-button { padding: .55rem 16px; margin-right: 12px; border: none; border-radius: var(--border-radius); background: rgba(10,140,52,.1); color: var(--color-primary-dark); font-family: var(--font-sans); font-size: 13px; font-weight: 700; cursor: pointer; transition: var(--transition); }
+.profile-photo-form input::file-selector-button:hover { background: rgba(10,140,52,.16); }
+.profile-photo-preview { display: flex; align-items: center; gap: 16px; padding: 14px; border: 1px dashed var(--color-border); border-radius: 12px; }
+.profile-photo-preview img { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; }
+.profile-photo-preview strong { font-size: 13px; }
+.profile-page .profile-photo-preview p { font-size: 12px; margin: 2px 0; }
+.profile-page .profile-cancel-photo { background: none; color: var(--color-primary-dark); padding: 0; font-size: 12px; text-decoration: underline; white-space: normal; }
+@media (max-width: 1180px) { .profile-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .profile-heading { margin-bottom: 24px; }
+  .profile-heading p { font-size: 14px; }
+  .profile-password-box { padding: 16px; }
+  .profile-fields-row { grid-template-columns: 1fr; gap: 16px; }
+  .profile-photo-info { gap: 14px; }
+  .profile-avatar { width: 68px; height: 68px; flex-basis: 68px; font-size: 22px; }
+  .profile-actions .btn { width: 100%; }
+}

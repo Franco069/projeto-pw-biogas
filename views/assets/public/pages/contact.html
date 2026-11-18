@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com BioGas Analytics — Tire suas dúvidas e conheça nossos serviços">
+  <title>Contato — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/contact.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="nav-brand" href="home.html">
+        <h1 class="logo">BioGas Analytics</h1>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="contact.html">Contato</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li class="nav-auth">
+          <a href="login.html" class="btn btn-secondary btn-small">Entrar</a>
+          <a href="register.html" class="btn btn-primary btn-small">Cadastro</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <section class="container">
+        <h1>Entre em Contato</h1>
+        <p class="hero-subtitle">Tire suas dúvidas, envie sugestões ou conheça melhor nossos serviços</p>
+      </section>
+    </section>
+
+    <!-- Contact Content Section -->
+    <section class="contact-content">
+      <section class="container">
+        <article class="contact-grid">
+          <!-- Contact Form -->
+          <section class="contact-form-section">
+            <h2>Envie uma Mensagem</h2>
+
+            <form id="contact-form" class="contact-form">
+              <fieldset>
+                <legend class="sr-only">Formulário de Contato</legend>
+
+                <fieldset class="form-group">
+                  <label for="contact-name">Nome Completo *</label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    required
+                    aria-required="true"
+                    placeholder="Digite seu nome"
+                  />
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label for="contact-email">E-mail *</label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    aria-required="true"
+                    placeholder="seu@email.com"
+                  />
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label for="contact-phone">Telefone</label>
+                  <input
+                    type="tel"
+                    id="contact-phone"
+                    name="phone"
+                    placeholder="(11) 99999-9999"
+                  />
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label for="contact-subject">Assunto *</label>
+                  <select id="contact-subject" name="subject" required aria-required="true">
+                    <option value="">Selecione um assunto</option>
+                    <option value="support">Suporte Técnico</option>
+                    <option value="partnership">Parceria e Negócios</option>
+                    <option value="feedback">Sugestão e Feedback</option>
+                    <option value="education">Educação e Pesquisa</option>
+                    <option value="other">Outro</option>
+                  </select>
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label for="contact-message">Mensagem *</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    aria-required="true"
+                    placeholder="Descreva sua mensagem aqui..."
+                  ></textarea>
+                </fieldset>
+
+                <fieldset class="form-group checkbox">
+                  <input
+                    type="checkbox"
+                    id="contact-privacy"
+                    name="privacy"
+                    required
+                    aria-required="true"
+                  />
+                  <label for="contact-privacy">
+                    Concordo com a <a href="faq.html">Política de Privacidade</a> *
+                  </label>
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary btn-large">Enviar Mensagem</button>
+              </fieldset>
+            </form>
+
+            <!-- Form Feedback -->
+            <aside id="form-feedback" class="form-feedback hidden" role="alert"></aside>
+          </section>
+
+          <!-- Contact Info -->
+          <aside class="contact-info-section">
+            <h2>Informações de Contato</h2>
+
+            <article class="contact-info-item">
+              <h3>📍 Endereço</h3>
+              <address>
+                <p><strong>BioGas Analytics</strong></p>
+                <p>Charqueadas, RS 96745-000</p>
+                <p>Brasil</p>
+              </address>
+            </article>
+
+            <article class="contact-info-item">
+              <h3>📞 Telefone</h3>
+              <p>
+                <a href="tel:+5551991234567">+55 (51) 99123-4567</a>
+              </p>
+              <p class="small">Horário comercial: seg-sex, 09:00 - 18:00 (Horário de Brasília)</p>
+            </article>
+
+            <article class="contact-info-item">
+              <h3>📧 E-mail</h3>
+              <p>
+                <strong>Suporte:</strong> <a href="mailto:suporte@biogasanalytics.com">suporte@biogasanalytics.com</a>
+              </p>
+              <p>
+                <strong>Parcerias:</strong> <a href="mailto:parceiros@biogasanalytics.com">parceiros@biogasanalytics.com</a>
+              </p>
+              <p>
+                <strong>Geral:</strong> <a href="mailto:contato@biogasanalytics.com">contato@biogasanalytics.com</a>
+              </p>
+            </article>
+
+            <article class="contact-info-item">
+              <h3>🕐 Horário de Atendimento</h3>
+              <ul>
+                <li><strong>Segunda a Sexta:</strong> 09:00 - 18:00</li>
+                <li><strong>Sábado:</strong> 10:00 - 14:00</li>
+                <li><strong>Domingo:</strong> Fechado</li>
+              </ul>
+            </article>
+
+          </aside>
+        </article>
+      </section>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <section class="container">
+        <h2>Localização</h2>
+        <figure class="map-placeholder">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23dcefe1'/%3E%3Cpath d='M0 420C120 400 210 345 320 350c110 5 195 75 298 75 95 0 164-43 251-52 113-11 214 35 331 71V600H0Z' fill='%2398c9a7'/%3E%3Cpath d='M0 315C114 255 222 240 327 263c96 22 160 79 267 86 104 7 183-38 275-71 111-41 207-31 331 37V0H0Z' fill='%23b5d9bf'/%3E%3Cpath d='M617 126c-31 0-56 25-56 56 0 48 56 122 56 122s56-74 56-122c0-31-25-56-56-56Zm0 81a25 25 0 1 1 0-50 25 25 0 0 1 0 50Z' fill='%230a8c34'/%3E%3Ccircle cx='617' cy='182' r='25' fill='%23fff'/%3E%3Cpath d='M300 470h600' stroke='%23ffffff' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M380 240h170' stroke='%23ffffff' stroke-width='14' stroke-linecap='round'/%3E%3Cpath d='M690 300h140' stroke='%23ffffff' stroke-width='14' stroke-linecap='round'/%3E%3C/svg%3E" alt="Mapa ilustrativo da localização de BioGas Analytics em Charqueadas, RS" />
+          <figcaption>Mapa interativo de Charqueadas, RS</figcaption>
+        </figure>
+      </section>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <section class="container text-center">
+        <h2>Comece Agora Mesmo</h2>
+        <p>Não tem uma conta? Cadastre-se gratuitamente e realize sua primeira análise.</p>
+        <a href="register.html" class="btn btn-primary btn-large">Criar Conta</a>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <section class="container">
+      <section class="footer-content">
+        <article class="footer-section">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </article>
+
+        <article class="footer-section">
+          <h4>Conta</h4>
+          <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Cadastro</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <hr class="footer-divider">
+
+      <section class="footer-bottom text-center">
+        <p>&copy; 2026 BioGas Analytics. Todos os direitos reservados. Desenvolvido com 💚 para um planeta mais sustentável.</p>
+        <p>Charqueadas – RS | Brasil</p>
+      </section>
+    </section>
+  </footer>
+
+  <script src="../../_common/scripts/HttpClientBase.js"></script>
+  <script src="../../_common/scripts/AppState.js"></script>
+  <script src="../scripts/contact.js"></script>
+</body>
+</html>

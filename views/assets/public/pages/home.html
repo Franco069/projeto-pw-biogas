@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BioGas Analytics — Análise e simulação de viabilidade de biogás a partir de resíduos orgânicos">
+  <title>Home — BioGas Analytics</title>
+  <link rel="stylesheet" href="../../_common/styles/base.css">
+  <link rel="stylesheet" href="../styles/home.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="nav-brand" href="home.html">
+        <h1 class="logo">BioGas Analytics</h1>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#benefits">Benefícios</a></li>
+        <li><a href="contact.html">Contato</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li class="nav-auth">
+          <a href="login.html" class="btn btn-secondary btn-small">Entrar</a>
+          <a href="register.html" class="btn btn-primary btn-small">Cadastro</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <section class="container">
+        <article class="hero-content">
+          <h1>Transforme seus Resíduos em Energia Limpa</h1>
+          <p class="hero-subtitle">Descubra a viabilidade e o potencial de produção de biogás para seu negócio ou propriedade</p>
+          <nav class="hero-cta" aria-label="Ações principais">
+            <a href="register.html" class="btn btn-primary btn-large">Começar Análise Gratuita</a>
+            <a href="#about" class="btn btn-secondary btn-large">Saiba Mais</a>
+          </nav>
+        </article>
+
+        <article class="hero-indicators">
+          <!-- TODO: substituir por dados reais da API -->
+          <article class="indicator">
+            <span id="home-indicator-total" class="indicator-value">0</span>
+            <p class="indicator-label">Simulações Realizadas</p>
+          </article>
+          <article class="indicator">
+            <span id="home-indicator-viability" class="indicator-value">0%</span>
+            <p class="indicator-label">Taxa de Viabilidade</p>
+          </article>
+          <article class="indicator">
+            <span id="home-indicator-savings" class="indicator-value">R$ 0,00</span>
+            <p class="indicator-label">Economia Total Identificada</p>
+          </article>
+        </article>
+      </section>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <section class="container">
+        <h2>O Que é BioGas Analytics?</h2>
+        <p class="lead">BioGas Analytics é uma plataforma de análise que simplifica a avaliação da viabilidade de biodigestores anaeróbios para produção de biogás. Desenvolvido para gestores públicos, proprietários de restaurantes, produtores rurais, estudantes e pesquisadores.</p>
+
+        <article class="about-grid">
+          <section class="about-item">
+            <h3>🔬 Baseado em Ciência</h3>
+            <p>Algoritmos que utilizam parâmetros técnicos reais de produção de biogás, levando em conta temperatura, tipo de resíduo e quantidade processada.</p>
+          </section>
+
+          <section class="about-item">
+            <h3>💰 Retorno Financeiro</h3>
+            <p>Análise econômica completa com estimativa de economia mensal e anual, além do tempo de retorno do investimento em um biodigestor.</p>
+          </section>
+
+          <section class="about-item">
+            <h3>♻️ Sustentabilidade</h3>
+            <p>Contribua com a redução de emissões de gases de efeito estufa e transforme resíduos em energia renovável e fertilizante orgânico.</p>
+          </section>
+
+          <section class="about-item">
+            <h3>📊 Dashboards Analíticos</h3>
+            <p>Visualize todos os seus indicadores em um só lugar: produção estimada, economia, diagnósticos e recomendações de otimização.</p>
+          </section>
+        </article>
+      </section>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <section class="container">
+        <h2>Como Funciona</h2>
+
+        <ol class="steps-list">
+          <li class="step-item">
+            <span class="step-number">1</span>
+            <article>
+              <h3>Responda um Questionário</h3>
+              <p>Forneça informações sobre seu local: tipo de negócio, quantidade de pessoas, tipo e volume de resíduos, temperatura média e consumo atual de GLP.</p>
+            </article>
+          </li>
+
+          <li class="step-item">
+            <span class="step-number">2</span>
+            <article>
+              <h3>Receba uma Análise Completa</h3>
+              <p>Nossa plataforma processa seus dados e gera estimativas de produção de biogás, economia financeira e tempo de retorno do investimento.</p>
+            </article>
+          </li>
+
+          <li class="step-item">
+            <span class="step-number">3</span>
+            <article>
+              <h3>Obtenha Recomendações</h3>
+              <p>Receba um diagnóstico automático com sugestões de otimização específicas para seu cenário.</p>
+            </article>
+          </li>
+
+          <li class="step-item">
+            <span class="step-number">4</span>
+            <article>
+              <h3>Compare Cenários</h3>
+              <p>Teste diferentes parâmetros, crie múltiplas simulações e compare cenários para tomar a melhor decisão.</p>
+            </article>
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+      <section class="container">
+        <h2>Benefícios de Usar BioGas Analytics</h2>
+
+        <ul class="benefits-grid">
+          <li class="benefit-card card">
+            <h3>Análise Gratuita e Rápida</h3>
+            <p>Obtenha resultados em minutos, sem custo inicial. Perfeito para avaliações preliminares de viabilidade.</p>
+          </li>
+
+          <li class="benefit-card card">
+            <h3>Dados Técnicos Precisos</h3>
+            <p>Baseiamo-nos em pesquisas científicas atualizadas e parâmetros reais da indústria de biogás.</p>
+          </li>
+
+          <li class="benefit-card card">
+            <h3>Relatórios Exportáveis</h3>
+            <p>Gere relatórios em PDF para apresentar a executivos, investidores ou órgãos públicos.</p>
+          </li>
+
+          <li class="benefit-card card">
+            <h3>Suporte Contínuo</h3>
+            <p>Dúvidas? Acesse nossa seção de FAQs ou entre em contato conosco diretamente.</p>
+          </li>
+
+          <li class="benefit-card card">
+            <h3>Histórico de Simulações</h3>
+            <p>Crie uma conta e acesse todas as suas simulações anteriores. Acompanhe estudos ao longo do tempo.</p>
+          </li>
+
+          <li class="benefit-card card">
+            <h3>Acesso em Qualquer Lugar</h3>
+            <p>Use no desktop, tablet ou smartphone. Nossa plataforma é completamente responsiva.</p>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- Featured Insights Section -->
+    <section class="featured-insights">
+      <section class="container">
+        <h2>Insights Simulados</h2>
+        <p class="lead">Exemplos de análises realizadas na plataforma:</p>
+
+        <!-- TODO: substituir por dados reais da API GET /api/featured-simulations -->
+        <ul id="home-insights-list" class="insights-grid">
+          <li class="insight-item card">
+            <h3>Restaurante em São Paulo</h3>
+            <dl>
+              <dt>Produção estimada:</dt>
+              <dd>420 m³/mês de biogás</dd>
+              <dt>Economia mensal:</dt>
+              <dd>R$ 850,00</dd>
+              <dt>Payback:</dt>
+              <dd>4 anos e 6 meses</dd>
+            </dl>
+          </li>
+
+          <li class="insight-item card">
+            <h3>Propriedade Rural em Mato Grosso</h3>
+            <dl>
+              <dt>Produção estimada:</dt>
+              <dd>1.850 m³/mês de biogás</dd>
+              <dt>Economia mensal:</dt>
+              <dd>R$ 3.200,00</dd>
+              <dt>Payback:</dt>
+              <dd>3 anos e 2 meses</dd>
+            </dl>
+          </li>
+
+          <li class="insight-item card">
+            <h3>Escola em Brasília</h3>
+            <dl>
+              <dt>Produção estimada:</dt>
+              <dd>280 m³/mês de biogás</dd>
+              <dt>Economia mensal:</dt>
+              <dd>R$ 520,00</dd>
+              <dt>Payback:</dt>
+              <dd>5 anos</dd>
+            </dl>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+      <section class="container">
+        <h2>Perguntas Frequentes</h2>
+
+        <ul id="home-faq-list" class="faq-list">
+
+        </ul>
+
+      </section>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <section class="container text-center">
+        <h2>Pronto para Começar?</h2>
+        <p>Realize sua primeira análise agora mesmo. É rápido, fácil e completamente gratuito.</p>
+        <a href="register.html" class="btn btn-primary btn-large">Criar Conta e Começar</a>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <section class="container">
+      <section class="footer-content">
+        <article class="footer-section">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </article>
+
+        <article class="footer-section">
+          <h4>Conta</h4>
+          <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Cadastro</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <hr class="footer-divider">
+
+      <section class="footer-bottom text-center">
+        <p>&copy; 2026 BioGas Analytics. Todos os direitos reservados. Desenvolvido com 💚 para um planeta mais sustentável.</p>
+        <p>Charqueadas – RS | Brasil</p>
+      </section>
+    </section>
+  </footer>
+
+  <script src="../../_common/scripts/HttpClientBase.js"></script>
+  <script src="../../_common/scripts/AppState.js"></script>
+  <script src="../scripts/faq-home.js"></script>
+</body>
+</html>
