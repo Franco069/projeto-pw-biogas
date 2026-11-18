@@ -1,0 +1,379 @@
+Verifiquei o `db_biogas` no seu MySQL. **Ele tem 15 tabelas**. A contagem de 16 que mencionei antes estava errada. A tabela `location_images`, a coluna `users.photo` e os campos `terms_accepted` e `newsletter` já existem. Os dois perfis de usuário e os quatro parâmetros iniciais também estão cadastrados.
+
+Comparando com os scripts do projeto, **faltam apenas `products` e `product_images`**, previstas na migração da Etapa 07. A galeria de fotos das simulações já usa `locations` e `location_images`. A galeria de **produtos** é separada, e suas rotas apontam para um controller `Products` que não está presente no projeto. Criar as duas tabelas completa o **banco** dessa etapa, mas, por si só, não faz essas rotas funcionarem.
+
+**Não alterei nenhum arquivo nem executei alterações no banco.** Segue aqui o SQL completo da estrutura e dos dados iniciais do projeto, sem exportar contas ou registros pessoais.
+
+- **No MySQL da escola, para instalar do zero**, copie e execute o bloco inteiro.
+- **No banco local que conferi**, se quiser apenas acrescentar o que falta, copie a partir do comentário `-- ETAPA 07: GALERIA DE PRODUTOS` até o final. Esse trecho já inclui `USE db_biogas`.
+
+```sql
+-- BioGas Analytics
+-- Estrutura completa: 15 tabelas do banco atual + 2 da galeria de produtos.
+-- O script não apaga bancos, tabelas ou registros.
+
+SET NAMES utf8mb4;
+
+CREATE DATABASE IF NOT EXISTS db_biogas
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE db_biogas;
+
+-- ============================================================
+-- USUÁRIOS E PERFIS DE ACESSO
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS user_types (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_type_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    photo VARCHAR(255) DEFAULT NULL,
+    active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    terms_accepted TINYINT(1) NOT NULL DEFAULT 0,
+    newsletter TINYINT(1) NOT NULL DEFAULT 0,
+
+    PRIMARY KEY (id),
+    UNIQUE KEY email (email),
+    CONSTRAINT fk_users_type
+        FOREIGN KEY (user_type_id) REFERENCES user_types (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- LOCAIS, FOTOS DOS LOCAIS E CONSUMO ENERGÉTICO
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS locations (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    name VARCHAR(120) NOT NULL,
+    location_type VARCHAR(80) DEFAULT NULL,
+    city VARCHAR(100) DEFAULT NULL,
+    state VARCHAR(2) DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_locations_user
+        FOREIGN KEY (user_id) REFERENCES users (id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS location_images (
+    id INT NOT NULL AUTO_INCREMENT,
+    location_id INT NOT NULL,
+    image_path VARCHAR(255) NOT NULL,
+    alt_text VARCHAR(255) DEFAULT NULL,
+    `position` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    KEY idx_location_images_location_id (location_id),
+    CONSTRAINT fk_location_images_location
+        FOREIGN KEY (location_id) REFERENCES locations (id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS energy_consumptions (
+    id INT NOT NULL AUTO_INCREMENT,
+    location_id INT NOT NULL,
+    energy_type VARCHAR(50) DEFAULT NULL,
+    monthly_consumption DECIMAL(10,2) DEFAULT NULL,
+    monthly_cost DECIMAL(10,2) DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_energy_location
+        FOREIGN KEY (location_id) REFERENCES locations (id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- RESÍDUOS E PARÂMETROS DE CÁLCULO
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS waste_types (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    estimated_yield DECIMAL(10,4) DEFAULT NULL,
+    active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS system_parameters (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    `value` DECIMAL(10,4) DEFAULT NULL,
+    unit VARCHAR(30) DEFAULT NULL,
+    description TEXT,
+    active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- CENÁRIOS E ITENS DE CENÁRIO
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS scenarios (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    title VARCHAR(120) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_scenarios_user
+        FOREIGN KEY (user_id) REFERENCES users (id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS scenario_items (
+    id INT NOT NULL AUTO_INCREMENT,
+    scenario_id INT NOT NULL,
+    label VARCHAR(100) DEFAULT NULL,
+    `value` VARCHAR(255) DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_scenario_items
+        FOREIGN KEY (scenario_id) REFERENCES scenarios (id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- SIMULAÇÕES, RESULTADOS, RECOMENDAÇÕES E RELATÓRIOS
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS simulations (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    location_id INT NOT NULL,
+    scenario_id INT DEFAULT NULL,
+    waste_type_id INT DEFAULT NULL,
+    people_quantity INT DEFAULT NULL,
+    daily_waste_kg DECIMAL(10,2) DEFAULT NULL,
+    average_temperature DECIMAL(5,2) DEFAULT NULL,
+    glp_consumption_kg DECIMAL(10,2) DEFAULT NULL,
+    glp_monthly_cost DECIMAL(10,2) DEFAULT NULL,
+    implementation_cost DECIMAL(10,2) DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_simulations_user
+        FOREIGN KEY (user_id) REFERENCES users (id),
+    CONSTRAINT fk_simulations_location
+        FOREIGN KEY (location_id) REFERENCES locations (id),
+    CONSTRAINT fk_simulations_scenario
+        FOREIGN KEY (scenario_id) REFERENCES scenarios (id),
+    CONSTRAINT fk_simulations_waste
+        FOREIGN KEY (waste_type_id) REFERENCES waste_types (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS simulation_results (
+    id INT NOT NULL AUTO_INCREMENT,
+    simulation_id INT NOT NULL,
+    estimated_biogas_m3 DECIMAL(10,2) DEFAULT NULL,
+    estimated_energy_kwh DECIMAL(10,2) DEFAULT NULL,
+    monthly_saving DECIMAL(10,2) DEFAULT NULL,
+    annual_saving DECIMAL(10,2) DEFAULT NULL,
+    payback_months DECIMAL(10,2) DEFAULT NULL,
+    efficiency_level VARCHAR(50) DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_results_simulation
+        FOREIGN KEY (simulation_id) REFERENCES simulations (id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS recommendations (
+    id INT NOT NULL AUTO_INCREMENT,
+    simulation_result_id INT NOT NULL,
+    title VARCHAR(120) DEFAULT NULL,
+    description TEXT,
+    priority ENUM('LOW', 'MEDIUM', 'HIGH') DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_recommendation_result
+        FOREIGN KEY (simulation_result_id) REFERENCES simulation_results (id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS reports (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    simulation_id INT NOT NULL,
+    title VARCHAR(255) DEFAULT NULL,
+    generated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_reports_user
+        FOREIGN KEY (user_id) REFERENCES users (id),
+    CONSTRAINT fk_reports_simulation
+        FOREIGN KEY (simulation_id) REFERENCES simulations (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- PERGUNTAS FREQUENTES
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS faqs_categories (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS faqs (
+    id INT NOT NULL AUTO_INCREMENT,
+    faqs_category_id INT NOT NULL,
+    question VARCHAR(255) NOT NULL,
+    answer TEXT NOT NULL,
+    active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    CONSTRAINT fk_faq_category
+        FOREIGN KEY (faqs_category_id) REFERENCES faqs_categories (id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- DADOS INICIAIS DO PROJETO
+-- Cada INSERT inclui apenas o registro que ainda não existir.
+-- ============================================================
+
+INSERT INTO user_types (id, name, active)
+SELECT 1, 'Administrador', 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM user_types WHERE id = 1
+);
+
+INSERT INTO user_types (id, name, active)
+SELECT 2, 'Usuário', 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM user_types WHERE id = 2
+);
+
+INSERT INTO system_parameters (name, `value`, unit, description, active)
+SELECT
+    'waste_per_person', 0.3840, 'kg/pessoa/dia',
+    'Resíduo orgânico diário estimado por pessoa.', 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM system_parameters WHERE name = 'waste_per_person'
+);
+
+INSERT INTO system_parameters (name, `value`, unit, description, active)
+SELECT
+    'biogas_yield', 0.0820, 'm³/kg',
+    'Rendimento de produção de biogás por quilograma de resíduo orgânico.', 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM system_parameters WHERE name = 'biogas_yield'
+);
+
+INSERT INTO system_parameters (name, `value`, unit, description, active)
+SELECT
+    'biogas_energy_conversion', 6.0000, 'kWh/m³',
+    'Energia estimada por metro cúbico de biogás.', 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM system_parameters WHERE name = 'biogas_energy_conversion'
+);
+
+INSERT INTO system_parameters (name, `value`, unit, description, active)
+SELECT
+    'glp_energy_conversion', 12.9000, 'kWh/kg',
+    'Energia equivalente por quilograma de GLP.', 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM system_parameters WHERE name = 'glp_energy_conversion'
+);
+
+INSERT INTO waste_types (name, description, estimated_yield, active)
+SELECT
+    'Resíduos orgânicos',
+    'Resíduos orgânicos utilizados na estimativa de produção de biogás.',
+    0.0820, 1
+WHERE NOT EXISTS (
+    SELECT 1 FROM waste_types WHERE name = 'Resíduos orgânicos'
+);
+
+-- ETAPA 07: GALERIA DE PRODUTOS
+-- Para completar o banco local conferido, execute daqui até o fim.
+
+USE db_biogas;
+
+CREATE TABLE IF NOT EXISTS products (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    KEY idx_products_user_id (user_id),
+    CONSTRAINT fk_gallery_products_user
+        FOREIGN KEY (user_id) REFERENCES users (id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS product_images (
+    id INT NOT NULL AUTO_INCREMENT,
+    product_id INT NOT NULL,
+    image_path VARCHAR(255) NOT NULL,
+    alt_text VARCHAR(255) DEFAULT NULL,
+    `position` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    KEY idx_product_images_product_id (product_id),
+    CONSTRAINT fk_product_images_product
+        FOREIGN KEY (product_id) REFERENCES products (id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Conferência após a importação: o esquema acima totaliza 17 tabelas.
+SELECT COUNT(*) AS total_de_tabelas
+FROM information_schema.tables
+WHERE table_schema = 'db_biogas'
+  AND table_type = 'BASE TABLE';
+```
